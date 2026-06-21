@@ -1,159 +1,455 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Kalpesh Ahire</title>
-  <meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kalpesh Ahire — Data Scientist specializing in predictive maintenance, time-series analysis, and MLOps at SLB." />
+  <title>Kalpesh Ahire · Data Scientist</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Three.js ES module import map (no build step needed) -->
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js" } }
+  </script>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="wrapper">
-  <div class="profile-card js-profile-card">
-    <div class="profile-card__img">
-      <img src="docs/assets/profile.jpg" alt="profile card">
+
+  <!-- Fixed 3D canvas — lives behind all content -->
+  <canvas id="neural-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">KA<span class="logo-dot">.</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
 
-    <div class="profile-card__cnt js-profile-cnt">
-      <div class="profile-card__name">Kalpesh Ahire</div>
-      <div class="profile-card__txt">Computer Engineering Student at <strong>COEP</strong></div>
-      <div class="profile-card-loc">
-        <span class="profile-card-loc__icon">
-          <svg class="icon"><use xlink:href="#icon-location"></use></svg>
-        </span>
-
-        <span class="profile-card-loc__txt">
-          Pune, India
-        </span>
+  <!-- ============================================
+       HERO
+       To add more above-the-fold content, edit this section.
+       ============================================ -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span class="font-mono">Data Scientist · SLB · Pune, India</span>
       </div>
-
-      <div class="profile-card-social">
-        <a href="https://www.facebook.com/kalpesh.ahire.10441/" class="profile-card-social__item facebook" target="_blank">
-          <span class="icon-font">
-              <svg class="icon"><use xlink:href="#icon-facebook"></use></svg>
-          </span>
-        </a>
-
-        <a href="https://twitter.com/Kalpesh_Ahire18" class="profile-card-social__item twitter" target="_blank">
-          <span class="icon-font">
-              <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>
-          </span>
-        </a>
-
-        <a href="https://www.instagram.com/ahire.kalpesh18/" class="profile-card-social__item instagram" target="_blank">
-          <span class="icon-font">
-              <svg class="icon"><use xlink:href="#icon-instagram"></use></svg>
-          </span>
-        </a>
-
-        <a href="https://www.linkedin.com/in/kalpesh-ahire-430a42192/" class="profile-card-social__item linkedin" target="_blank">
-          <span class="icon-font">
-              <svg class="icon"><use xlink:href="#icon-linkedin"></use></svg>
-          </span>
-        </a>
-
-        <a href="https://github.com/Kalpesh-18" class="profile-card-social__item github" target="_blank">
-          <span class="icon-font">
-              <svg class="icon"><use xlink:href="#icon-github"></use></svg>
-          </span>
-        </a>
-
+      <h1 class="hero-name">
+        <span class="name-first">Kalpesh</span>
+        <span class="name-last">Ahire<span class="accent-dot">.</span></span>
+      </h1>
+      <p class="hero-tagline">Finding signal<br>in the noise.</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-row">
+            <span class="stat-value font-mono" data-target="3">0</span>
+            <span class="stat-suffix font-mono">+</span>
+          </div>
+          <span class="stat-label font-mono">Years Experience</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-row">
+            <span class="stat-value font-mono" data-target="25">0</span>
+            <span class="stat-suffix font-mono">%</span>
+          </div>
+          <span class="stat-label font-mono">Downtime Reduced</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-row">
+            <span class="stat-value font-mono" data-target="0.92" data-decimal="true">0</span>
+          </div>
+          <span class="stat-label font-mono">Best AUC Score</span>
+        </div>
       </div>
-
-      <div class="profile-card-ctr">
-        <button class="profile-card__button button--blue js-message-btn">Message</button>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
       </div>
     </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-text font-mono">scroll</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
 
-    <div class="profile-card-message js-message">
-      <form class="profile-card-form">
-        <div class="profile-card-form__container">
-          <textarea placeholder="Say something..."></textarea>
+  <!-- ============================================
+       ABOUT
+       Edit the bio text and meta items below.
+       ============================================ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-label font-mono">/ about</div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <h2>Building models that<br><em>predict before problems occur.</em></h2>
+          <p>I'm a Data Scientist at SLB working at the intersection of industrial engineering and machine learning. My core work: turning raw sensor telemetry from oilfield equipment into actionable failure predictions before downtime strikes.</p>
+          <p>My toolkit spans the full ML lifecycle — ETL with Polars, anomaly detection with HDBSCAN, survival analysis with PyTorch, and CI/CD deployment via Azure Pipelines and Docker. I believe clean data infrastructure is as important as any model.</p>
+          <p>Beyond predictive maintenance, I explore quantitative finance, transformer architectures, and LLM systems — always chasing the next hard problem.</p>
+          <div class="about-meta">
+            <div class="meta-item">
+              <span class="meta-label font-mono">EDU</span>
+              <span>B.Tech Computer Engineering, College of Engineering Pune · 2023</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label font-mono">PUB</span>
+              <span>Student Identity Verification on Solana Blockchain — Taylor & Francis, 2024</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label font-mono">AWD</span>
+              <span>Digital Maturity Disruptor Award, SLB 2025 · InnovateX PitchFest Top 25, 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <div class="waveform-card">
+            <div class="waveform-header font-mono">
+              <span>SUCTION_PSI · CH_01</span>
+              <span class="wf-status">● LIVE</span>
+            </div>
+            <canvas id="waveform-canvas" width="560" height="240"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       EXPERIENCE
+       Add new timeline-item blocks to extend this section.
+       ============================================ -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-label font-mono">/ experience</div>
+      <h2 class="section-title reveal">Where I've Worked</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-track">
+            <div class="tl-node active"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Data Scientist</h3>
+                <span class="tl-company font-mono">SLB</span>
+              </div>
+              <span class="tl-date font-mono">Jul 2023 – Present</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Prognostic health ML models (time-series &amp; survival analysis) using PyTorch — <strong>reduced equipment downtime by 25%</strong></li>
+              <li>Teradata SQL stored procedures for in-database preprocessing, minimizing data movement and latency</li>
+              <li>ETL pipelines for sensor telemetry using Polars; anomaly detection and feature engineering for predictive maintenance</li>
+              <li>HDBSCAN density-based clustering on multivariate sensor streams to isolate channel drift and degradation patterns</li>
+              <li>Univariate monitoring via z-score/EWMA control-chart thresholds for real-time excursion detection</li>
+              <li>CI/CD for ML via Azure Pipelines + Docker — automated training, testing, and deployment</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Python</span><span>PyTorch</span><span>Polars</span><span>HDBSCAN</span>
+              <span>Azure Pipelines</span><span>Docker</span><span>Teradata SQL</span>
+            </div>
+          </div>
         </div>
 
-        <div class="profile-card-form__bottom">
-          <button class="profile-card__button button--blue js-message-close">
-            Send
-          </button>
-
-          <button class="profile-card__button button--gray js-message-close">
-            Cancel
-          </button>
+        <div class="timeline-item reveal">
+          <div class="timeline-track">
+            <div class="tl-node"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Data Science Intern</h3>
+                <span class="tl-company font-mono">SLB</span>
+              </div>
+              <span class="tl-date font-mono">Jan 2023 – Jun 2023</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>PDF extraction model with <strong>98% accuracy</strong> — automated 30+ key fields, cutting manual data entry by 70%</li>
+              <li>Image Processing AI to read labels and identify defects on Electric Boards</li>
+              <li>Power BI dashboard for fuel consumption analysis across pump operating modes</li>
+              <li>Threshold-based real-time anomaly visualizer — <strong>25% reduction in downtime</strong></li>
+            </ul>
+            <div class="tl-tags">
+              <span>Python</span><span>Power BI</span><span>Computer Vision</span><span>ML</span>
+            </div>
+          </div>
         </div>
-      </form>
 
-      <div class="profile-card__overlay js-message-close"></div>
+        <div class="timeline-item reveal">
+          <div class="timeline-track">
+            <div class="tl-node"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">SDE Intern</h3>
+                <span class="tl-company font-mono">Mastercard</span>
+              </div>
+              <span class="tl-date font-mono">May 2022 – Jul 2022</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Decomposed a monolithic 35 KLC API into microservices using Spring Boot</li>
+              <li>Applied facade design pattern — <strong>reduced development time by 15%</strong></li>
+              <li>Database layer management using JPA Repository</li>
+            </ul>
+            <div class="tl-tags">
+              <span>Java</span><span>Spring Boot</span><span>JPA</span><span>Microservices</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-  </div>
+  <!-- ============================================
+       PROJECTS
+       Copy a project-card block to add more projects.
+       ============================================ -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-label font-mono">/ projects</div>
+      <h2 class="section-title reveal">Selected Work</h2>
+      <div class="projects-grid">
 
-</div>
-  
-<svg hidden="hidden">
-  <defs>
-    <symbol id="icon-codepen" viewBox="0 0 32 32">
-      <title>codepen</title>
-      <path d="M31.872 10.912v-0.032c0-0.064 0-0.064 0-0.096v-0.064c0-0.064 0-0.064-0.064-0.096 0 0 0-0.064-0.064-0.064 0-0.064-0.064-0.064-0.064-0.096 0 0 0-0.064-0.064-0.064 0-0.064-0.064-0.064-0.064-0.096l-0.192-0.192v-0.064l-0.064-0.064-14.592-9.696c-0.448-0.32-1.056-0.32-1.536 0l-14.528 9.696-0.32 0.32c0 0-0.064 0.064-0.064 0.096 0 0 0 0.064-0.064 0.064 0 0.064-0.064 0.064-0.064 0.096 0 0 0 0.064-0.064 0.064 0 0.064 0 0.064-0.064 0.096v0.064c0 0.064 0 0.064 0 0.096v0.064c0 0.064 0 0.096 0 0.16v9.696c0 0.064 0 0.096 0 0.16v0.064c0 0.064 0 0.064 0 0.096v0.064c0 0.064 0 0.064 0.064 0.096 0 0 0 0.064 0.064 0.064 0 0.064 0.064 0.064 0.064 0.096 0 0 0 0.064 0.064 0.064 0 0.064 0.064 0.064 0.064 0.096l0.256 0.256 0.064 0.032 14.528 9.728c0.224 0.16 0.48 0.224 0.768 0.224s0.544-0.064 0.768-0.224l14.528-9.728 0.32-0.32c0 0 0.064-0.064 0.064-0.096 0 0 0-0.064 0.064-0.064 0-0.064 0.064-0.064 0.064-0.096 0 0 0-0.064 0.064-0.064 0-0.064 0-0.064 0.064-0.096v-0.032c0-0.064 0-0.064 0-0.096v-0.064c0-0.064 0-0.096 0-0.16v-9.664c0-0.064 0-0.096 0-0.224zM17.312 4l10.688 7.136-4.768 3.168-5.92-3.936v-6.368zM14.56 4v6.368l-5.92 3.968-4.768-3.168 10.688-7.168zM2.784 13.664l3.392 2.304-3.392 2.304c0 0 0-4.608 0-4.608zM14.56 28l-10.688-7.136 4.768-3.2 5.92 3.936v6.4zM15.936 19.2l-4.832-3.232 4.832-3.232 4.832 3.232-4.832 3.232zM17.312 28v-6.432l5.92-3.936 4.8 3.168-10.72 7.2zM29.12 18.272l-3.392-2.304 3.392-2.304v4.608z"></path>
-    </symbol>
+        <div class="project-card reveal">
+          <div class="project-num font-mono">01</div>
+          <div class="project-glyph">⬡</div>
+          <h3>RAG Chatbot</h3>
+          <p>End-to-end Retrieval-Augmented Generation system on Amazon Bedrock with chunking, vector embeddings, and prompt-engineered source citations to minimize hallucinations. Deployed via REST API/CLI with CI/CD on Azure Pipelines.</p>
+          <div class="project-tags">
+            <span>Amazon Bedrock</span><span>RAG</span><span>AWS S3</span><span>Docker</span><span>REST API</span>
+          </div>
+          <div class="project-footer">
+            <span class="project-impact font-mono">↓ Hallucination rate via citation grounding</span>
+          </div>
+        </div>
 
-    <symbol id="icon-github" viewBox="0 0 32 32">
-      <title>github</title>
-      <path d="M16.192 0.512c-8.832 0-16 7.168-16 16 0 7.072 4.576 13.056 10.944 15.168 0.8 0.16 1.088-0.352 1.088-0.768 0-0.384 0-1.632-0.032-2.976-4.448 0.96-5.376-1.888-5.376-1.888-0.736-1.856-1.792-2.336-1.792-2.336-1.44-0.992 0.096-0.96 0.096-0.96 1.6 0.128 2.464 1.664 2.464 1.664 1.44 2.432 3.744 1.728 4.672 1.344 0.128-1.024 0.544-1.728 1.024-2.144-3.552-0.448-7.296-1.824-7.296-7.936 0-1.76 0.64-3.168 1.664-4.288-0.16-0.416-0.704-2.016 0.16-4.224 0 0 1.344-0.416 4.416 1.632 1.28-0.352 2.656-0.544 4-0.544s2.72 0.192 4 0.544c3.040-2.080 4.384-1.632 4.384-1.632 0.864 2.208 0.32 3.84 0.16 4.224 1.024 1.12 1.632 2.56 1.632 4.288 0 6.144-3.744 7.488-7.296 7.904 0.576 0.512 1.088 1.472 1.088 2.976 0 2.144-0.032 3.872-0.032 4.384 0 0.416 0.288 0.928 1.088 0.768 6.368-2.112 10.944-8.128 10.944-15.168 0-8.896-7.168-16.032-16-16.032z"></path>
-      <path d="M6.24 23.488c-0.032 0.064-0.16 0.096-0.288 0.064-0.128-0.064-0.192-0.16-0.128-0.256 0.032-0.096 0.16-0.096 0.288-0.064 0.128 0.064 0.192 0.16 0.128 0.256v0z"></path>
-      <path d="M6.912 24.192c-0.064 0.064-0.224 0.032-0.32-0.064s-0.128-0.256-0.032-0.32c0.064-0.064 0.224-0.032 0.32 0.064s0.096 0.256 0.032 0.32v0z"></path>
-      <path d="M7.52 25.12c-0.096 0.064-0.256 0-0.352-0.128s-0.096-0.32 0-0.384c0.096-0.064 0.256 0 0.352 0.128 0.128 0.128 0.128 0.32 0 0.384v0z"></path>
-      <path d="M8.384 26.016c-0.096 0.096-0.288 0.064-0.416-0.064s-0.192-0.32-0.096-0.416c0.096-0.096 0.288-0.064 0.416 0.064 0.16 0.128 0.192 0.32 0.096 0.416v0z"></path>
-      <path d="M9.6 26.528c-0.032 0.128-0.224 0.192-0.384 0.128-0.192-0.064-0.288-0.192-0.256-0.32s0.224-0.192 0.416-0.128c0.128 0.032 0.256 0.192 0.224 0.32v0z"></path>
-      <path d="M10.912 26.624c0 0.128-0.16 0.256-0.352 0.256s-0.352-0.096-0.352-0.224c0-0.128 0.16-0.256 0.352-0.256 0.192-0.032 0.352 0.096 0.352 0.224v0z"></path>
-      <path d="M12.128 26.4c0.032 0.128-0.096 0.256-0.288 0.288s-0.352-0.032-0.384-0.16c-0.032-0.128 0.096-0.256 0.288-0.288s0.352 0.032 0.384 0.16v0z"></path>
-    </symbol>
+        <div class="project-card reveal">
+          <div class="project-num font-mono">02</div>
+          <div class="project-glyph">◈</div>
+          <h3>Loan Payback Predictor</h3>
+          <p>Kaggle competition entry using XGBoost, LightGBM, and CatBoost. Automated hyperparameter search via Optuna. Stacked meta-learner (XGBoost + LightGBM with logistic regression) averaged with CatBoost for final predictions.</p>
+          <div class="project-tags">
+            <span>XGBoost</span><span>LightGBM</span><span>Optuna</span><span>CatBoost</span><span>scikit-learn</span>
+          </div>
+          <div class="project-footer">
+            <span class="project-impact font-mono">AUC = 0.92</span>
+          </div>
+        </div>
 
-    <symbol id="icon-location" viewBox="0 0 32 32">
-      <title>location</title>
-      <path d="M16 31.68c-0.352 0-0.672-0.064-1.024-0.16-0.8-0.256-1.44-0.832-1.824-1.6l-6.784-13.632c-1.664-3.36-1.568-7.328 0.32-10.592 1.856-3.2 4.992-5.152 8.608-5.376h1.376c3.648 0.224 6.752 2.176 8.608 5.376 1.888 3.264 2.016 7.232 0.352 10.592l-6.816 13.664c-0.288 0.608-0.8 1.12-1.408 1.408-0.448 0.224-0.928 0.32-1.408 0.32zM15.392 2.368c-2.88 0.192-5.408 1.76-6.912 4.352-1.536 2.688-1.632 5.92-0.288 8.672l6.816 13.632c0.128 0.256 0.352 0.448 0.64 0.544s0.576 0.064 0.832-0.064c0.224-0.096 0.384-0.288 0.48-0.48l6.816-13.664c1.376-2.752 1.248-5.984-0.288-8.672-1.472-2.56-4-4.128-6.88-4.32h-1.216zM16 17.888c-3.264 0-5.92-2.656-5.92-5.92 0-3.232 2.656-5.888 5.92-5.888s5.92 2.656 5.92 5.92c0 3.264-2.656 5.888-5.92 5.888zM16 8.128c-2.144 0-3.872 1.728-3.872 3.872s1.728 3.872 3.872 3.872 3.872-1.728 3.872-3.872c0-2.144-1.76-3.872-3.872-3.872z"></path>
-      <path d="M16 32c-0.384 0-0.736-0.064-1.12-0.192-0.864-0.288-1.568-0.928-1.984-1.728l-6.784-13.664c-1.728-3.456-1.6-7.52 0.352-10.912 1.888-3.264 5.088-5.28 8.832-5.504h1.376c3.744 0.224 6.976 2.24 8.864 5.536 1.952 3.36 2.080 7.424 0.352 10.912l-6.784 13.632c-0.32 0.672-0.896 1.216-1.568 1.568-0.48 0.224-0.992 0.352-1.536 0.352zM15.36 0.64h-0.064c-3.488 0.224-6.56 2.112-8.32 5.216-1.824 3.168-1.952 7.040-0.32 10.304l6.816 13.632c0.32 0.672 0.928 1.184 1.632 1.44s1.472 0.192 2.176-0.16c0.544-0.288 1.024-0.736 1.28-1.28l6.816-13.632c1.632-3.264 1.504-7.136-0.32-10.304-1.824-3.104-4.864-5.024-8.384-5.216h-1.312zM16 29.952c-0.16 0-0.32-0.032-0.448-0.064-0.352-0.128-0.64-0.384-0.8-0.704l-6.816-13.664c-1.408-2.848-1.312-6.176 0.288-8.96 1.536-2.656 4.16-4.32 7.168-4.512h1.216c3.040 0.192 5.632 1.824 7.2 4.512 1.6 2.752 1.696 6.112 0.288 8.96l-6.848 13.632c-0.128 0.288-0.352 0.512-0.64 0.64-0.192 0.096-0.384 0.16-0.608 0.16zM15.424 2.688c-2.784 0.192-5.216 1.696-6.656 4.192-1.504 2.592-1.6 5.696-0.256 8.352l6.816 13.632c0.096 0.192 0.256 0.32 0.448 0.384s0.416 0.064 0.608-0.032c0.16-0.064 0.288-0.192 0.352-0.352l6.816-13.664c1.312-2.656 1.216-5.792-0.288-8.352-1.472-2.464-3.904-4-6.688-4.16h-1.152zM16 18.208c-3.424 0-6.24-2.784-6.24-6.24 0-3.424 2.816-6.208 6.24-6.208s6.24 2.784 6.24 6.24c0 3.424-2.816 6.208-6.24 6.208zM16 6.4c-3.072 0-5.6 2.496-5.6 5.6 0 3.072 2.528 5.6 5.6 5.6s5.6-2.496 5.6-5.6c0-3.104-2.528-5.6-5.6-5.6zM16 16.16c-2.304 0-4.16-1.888-4.16-4.16s1.888-4.16 4.16-4.16c2.304 0 4.16 1.888 4.16 4.16s-1.856 4.16-4.16 4.16zM16 8.448c-1.952 0-3.552 1.6-3.552 3.552s1.6 3.552 3.552 3.552c1.952 0 3.552-1.6 3.552-3.552s-1.6-3.552-3.552-3.552z"></path>
-    </symbol>
+        <div class="project-card reveal">
+          <div class="project-num font-mono">03</div>
+          <div class="project-glyph">◎</div>
+          <h3>StatGo</h3>
+          <p>Python desktop analytics app aggregating Chrome browsing history into visual dashboards. Interactive PyQt5 GUI with time-spent analysis, top domain rankings, session timelines, and hourly heatmaps with date/domain filters.</p>
+          <div class="project-tags">
+            <span>Python</span><span>PyQt5</span><span>SQLite</span><span>Data Viz</span><span>CSV Export</span>
+          </div>
+          <div class="project-footer">
+            <span class="project-impact font-mono">Local-first · Zero cloud dependency</span>
+          </div>
+        </div>
 
-    <symbol id="icon-facebook" viewBox="0 0 32 32">
-      <title>facebook</title>
-      <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
-    </symbol>
+      </div>
+    </div>
+  </section>
 
-    <symbol id="icon-instagram" viewBox="0 0 32 32">
-      <title>instagram</title>
-      <path d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z"></path>
-      <path d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z"></path>
-      <path d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z"></path>
-    </symbol>
+  <!-- ============================================
+       SKILLS
+       Add skill-group blocks or skill-bar entries to extend.
+       ============================================ -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-label font-mono">/ skills</div>
+      <h2 class="section-title reveal">Technical Stack</h2>
+      <div class="skills-grid">
 
-    <symbol id="icon-twitter" viewBox="0 0 32 32">
-      <title>twitter</title>
-      <path d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"></path>
-    </symbol>
+        <div class="skill-group reveal">
+          <div class="skill-group-header">
+            <span class="skill-ch font-mono">CH_01</span>
+            <span class="skill-group-title">Languages &amp; Data</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar" data-level="95">
+              <span class="skill-name">Python</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">95</span>
+            </div>
+            <div class="skill-bar" data-level="85">
+              <span class="skill-name">SQL / Teradata</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">85</span>
+            </div>
+            <div class="skill-bar" data-level="88">
+              <span class="skill-name">Polars / Pandas</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">88</span>
+            </div>
+            <div class="skill-bar" data-level="80">
+              <span class="skill-name">NumPy</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">80</span>
+            </div>
+          </div>
+        </div>
 
-    <symbol id="icon-behance" viewBox="0 0 32 32">
-      <title>behance</title>
-      <path d="M9.281 6.412c0.944 0 1.794 0.081 2.569 0.25 0.775 0.162 1.431 0.438 1.988 0.813 0.55 0.375 0.975 0.875 1.287 1.5 0.3 0.619 0.45 1.394 0.45 2.313 0 0.994-0.225 1.819-0.675 2.481-0.456 0.662-1.119 1.2-2.006 1.625 1.213 0.35 2.106 0.962 2.706 1.831 0.6 0.875 0.887 1.925 0.887 3.163 0 1-0.194 1.856-0.575 2.581-0.387 0.731-0.912 1.325-1.556 1.781-0.65 0.462-1.4 0.8-2.237 1.019-0.831 0.219-1.688 0.331-2.575 0.331h-9.544v-19.688h9.281zM8.719 14.363c0.769 0 1.406-0.181 1.906-0.55 0.5-0.363 0.738-0.963 0.738-1.787 0-0.456-0.081-0.838-0.244-1.131-0.169-0.294-0.387-0.525-0.669-0.688-0.275-0.169-0.588-0.281-0.956-0.344-0.356-0.069-0.731-0.1-1.113-0.1h-4.050v4.6h4.388zM8.956 22.744c0.425 0 0.831-0.038 1.213-0.125 0.387-0.087 0.731-0.219 1.019-0.419 0.287-0.194 0.531-0.45 0.706-0.788 0.175-0.331 0.256-0.756 0.256-1.275 0-1.012-0.287-1.738-0.856-2.175-0.569-0.431-1.325-0.644-2.262-0.644h-4.7v5.419h4.625z"></path>
-      <path d="M22.663 22.675c0.587 0.575 1.431 0.863 2.531 0.863 0.788 0 1.475-0.2 2.044-0.6s0.913-0.825 1.044-1.262h3.45c-0.556 1.719-1.394 2.938-2.544 3.675-1.131 0.738-2.519 1.113-4.125 1.113-1.125 0-2.131-0.181-3.038-0.538-0.906-0.363-1.663-0.869-2.3-1.531-0.619-0.663-1.106-1.45-1.45-2.375-0.337-0.919-0.512-1.938-0.512-3.038 0-1.069 0.175-2.063 0.525-2.981 0.356-0.925 0.844-1.719 1.494-2.387s1.413-1.2 2.313-1.588c0.894-0.387 1.881-0.581 2.975-0.581 1.206 0 2.262 0.231 3.169 0.706 0.9 0.469 1.644 1.1 2.225 1.887s0.994 1.694 1.25 2.706c0.256 1.012 0.344 2.069 0.275 3.175h-10.294c0 1.119 0.375 2.188 0.969 2.756zM27.156 15.188c-0.462-0.512-1.256-0.794-2.212-0.794-0.625 0-1.144 0.106-1.556 0.319-0.406 0.213-0.738 0.475-0.994 0.787-0.25 0.313-0.425 0.65-0.525 1.006-0.1 0.344-0.163 0.663-0.181 0.938h6.375c-0.094-1-0.438-1.738-0.906-2.256z"></path>
-      <path d="M20.887 8h7.981v1.944h-7.981v-1.944z"></path>
-    </symbol>
+        <div class="skill-group reveal">
+          <div class="skill-group-header">
+            <span class="skill-ch font-mono">CH_02</span>
+            <span class="skill-group-title">ML &amp; Algorithms</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar" data-level="90">
+              <span class="skill-name">scikit-learn</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">90</span>
+            </div>
+            <div class="skill-bar" data-level="82">
+              <span class="skill-name">PyTorch</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">82</span>
+            </div>
+            <div class="skill-bar" data-level="85">
+              <span class="skill-name">XGBoost / LightGBM</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">85</span>
+            </div>
+            <div class="skill-bar" data-level="75">
+              <span class="skill-name">HuggingFace Transformers</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">75</span>
+            </div>
+            <div class="skill-bar" data-level="88">
+              <span class="skill-name">HDBSCAN</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">88</span>
+            </div>
+          </div>
+        </div>
 
-    <symbol id="icon-link" viewBox="0 0 32 32">
-      <title>link</title>
-      <path d="M17.984 11.456c-0.704 0.704-0.704 1.856 0 2.56 2.112 2.112 2.112 5.568 0 7.68l-5.12 5.12c-2.048 2.048-5.632 2.048-7.68 0-1.024-1.024-1.6-2.4-1.6-3.84s0.576-2.816 1.6-3.84c0.704-0.704 0.704-1.856 0-2.56s-1.856-0.704-2.56 0c-1.696 1.696-2.624 3.968-2.624 6.368 0 2.432 0.928 4.672 2.656 6.4 1.696 1.696 3.968 2.656 6.4 2.656s4.672-0.928 6.4-2.656l5.12-5.12c3.52-3.52 3.52-9.248 0-12.8-0.736-0.672-1.888-0.672-2.592 0.032z"></path>
-      <path d="M29.344 2.656c-1.696-1.728-3.968-2.656-6.4-2.656s-4.672 0.928-6.4 2.656l-5.12 5.12c-3.52 3.52-3.52 9.248 0 12.8 0.352 0.352 0.8 0.544 1.28 0.544s0.928-0.192 1.28-0.544c0.704-0.704 0.704-1.856 0-2.56-2.112-2.112-2.112-5.568 0-7.68l5.12-5.12c2.048-2.048 5.632-2.048 7.68 0 1.024 1.024 1.6 2.4 1.6 3.84s-0.576 2.816-1.6 3.84c-0.704 0.704-0.704 1.856 0 2.56s1.856 0.704 2.56 0c1.696-1.696 2.656-3.968 2.656-6.4s-0.928-4.704-2.656-6.4z"></path>
-    </symbol>
-    
-    <symbol id="icon-linkedin" viewBox="0 0 32 32">
-      <title>linkedin</title>
-      <path d="M9.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"></path>
-    </symbol>
-  </defs>
-</svg>
-<!-- partial -->
-  <script  src="./script.js"></script>
+        <div class="skill-group reveal">
+          <div class="skill-group-header">
+            <span class="skill-ch font-mono">CH_03</span>
+            <span class="skill-group-title">Statistical Methods</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar" data-level="92">
+              <span class="skill-name">Time-Series Analysis</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">92</span>
+            </div>
+            <div class="skill-bar" data-level="90">
+              <span class="skill-name">Anomaly Detection</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">90</span>
+            </div>
+            <div class="skill-bar" data-level="85">
+              <span class="skill-name">Statistical Process Control</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">85</span>
+            </div>
+            <div class="skill-bar" data-level="80">
+              <span class="skill-name">Survival Analysis</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">80</span>
+            </div>
+          </div>
+        </div>
 
+        <div class="skill-group reveal">
+          <div class="skill-group-header">
+            <span class="skill-ch font-mono">CH_04</span>
+            <span class="skill-group-title">MLOps &amp; Cloud</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-bar" data-level="85">
+              <span class="skill-name">Azure Pipelines / DevOps</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">85</span>
+            </div>
+            <div class="skill-bar" data-level="86">
+              <span class="skill-name">Docker</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">86</span>
+            </div>
+            <div class="skill-bar" data-level="78">
+              <span class="skill-name">Amazon Bedrock / AWS</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">78</span>
+            </div>
+            <div class="skill-bar" data-level="75">
+              <span class="skill-name">MLflow</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">75</span>
+            </div>
+            <div class="skill-bar" data-level="60">
+              <span class="skill-name">Kubernetes</span>
+              <div class="bar-track"><div class="bar-fill"></div></div>
+              <span class="skill-pct font-mono">60</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+       ============================================ -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-label font-mono">/ contact</div>
+      <div class="contact-inner">
+        <h2 class="reveal">Let's build something<br><em>signal-worthy.</em></h2>
+        <p class="reveal">Open to high-impact ML/AI roles in predictive systems, MLOps, and applied data science. Let's connect.</p>
+        <div class="contact-links reveal">
+          <a href="mailto:kalpesh.ahire182001@gmail.com" class="contact-link">
+            <span class="cl-icon font-mono">✉</span>
+            <span>kalpesh.ahire182001@gmail.com</span>
+          </a>
+          <a href="https://linkedin.com/in/kalpesh-ahire" class="contact-link" target="_blank" rel="noopener noreferrer">
+            <span class="cl-icon font-mono">in</span>
+            <span>LinkedIn Profile</span>
+          </a>
+          <a href="tel:+917620474069" class="contact-link">
+            <span class="cl-icon font-mono">✆</span>
+            <span>+91 76204 74069</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <span class="font-mono footer-copy">© 2026 Kalpesh Ahire</span>
+      <span class="font-mono footer-built">Built with Three.js · No frameworks</span>
+    </div>
+  </footer>
+
+  <!-- Entry point (ES module) -->
+  <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
