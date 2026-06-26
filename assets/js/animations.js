@@ -128,8 +128,55 @@ export function initCounters() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SKILL BARS
+// LEETCODE DASHBOARD
 // ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Animates the LeetCode dashboard when it scrolls into view:
+ *  - SVG ring stroke-dashoffset counts up to represent 343/~900 solved
+ *  - Difficulty bars (.lc-diff-fill) fill to their data-w widths
+ *  - Language bars (.lc-lang-fill) fill to their data-w widths
+ */
+export function initLeetcodeDashboard() {
+  const dashboard = document.querySelector('.lc-dashboard');
+  if (!dashboard) return;
+
+  // Circumference for r=34 circle: 2π×34 ≈ 213.6
+  const CIRCUMFERENCE = 213.6;
+  // 343 problems out of ~900 total on LeetCode ≈ 38% of ring
+  const SOLVED_RATIO  = 343 / 900;
+
+  const animateDashboard = () => {
+    // Ring
+    const ring = dashboard.querySelector('.ring-fill');
+    if (ring) {
+      const offset = CIRCUMFERENCE - SOLVED_RATIO * CIRCUMFERENCE;
+      ring.style.strokeDashoffset = offset;
+    }
+
+    // Difficulty + language bars — driven by data-w attribute (percentage 0–100)
+    dashboard.querySelectorAll('.lc-diff-fill, .lc-lang-fill').forEach((bar, i) => {
+      setTimeout(() => {
+        bar.style.width = (bar.dataset.w ?? '0') + '%';
+      }, i * 100);
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateDashboard();
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  observer.observe(dashboard);
+}
+
 
 /**
  * When a `.skill-group` enters the viewport, its `.bar-fill` elements

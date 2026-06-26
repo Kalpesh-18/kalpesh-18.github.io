@@ -21,6 +21,7 @@ import {
   initScrollReveal,
   initCounters,
   initSkillBars,
+  initLeetcodeDashboard,
 } from './animations.js';
 
 function init() {
@@ -41,6 +42,7 @@ function init() {
   initScrollReveal();
   initCounters();
   initSkillBars();
+  initLeetcodeDashboard();
 }
 
 // Run after DOM is ready
